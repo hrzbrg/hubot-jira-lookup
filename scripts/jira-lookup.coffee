@@ -178,13 +178,13 @@ reportIssue = (robot, msg, issue) ->
           style = GetRoomStylePref robot, msg
             
           if style is "long"
-            fallback = "*Issue:\t #{data.key.value}: #{data.summary.value}*\n"
+            fallback = "*#{data.key.value}: #{data.summary.value}*\n"
             if data.description.value? and inc_desc.toUpperCase() is "Y"
               if max_len and data.description.value?.length > max_len
                 fallback += "*Description:*\n #{data.description.value.substring(0,max_len)} ...\n"
               else
                 fallback += "*Description:*\n #{data.description.value}\n"
-            fallback += "*Assignee:*\n #{data.assignee.value}\n*Status:*\n #{data.status.value}\n*Link:*\n #{data.link.value}\n"
+            fallback += "*Assignee:* #{data.assignee.value}\n*Status:* #{data.status.value}\n*Link:* #{data.link.value}\n"
           else
             fallback = "#{data.key.value}: #{data.summary.value} [status #{data.status.value}; assigned to #{data.assignee.value} ] #{data.link.value}"
             
